@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "language": "python",
+        "code": "def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)",
+        "displayTime": 10,
+        "question": "What does this function calculate?",
+        "options": [
+            "Factorial",
+            "Fibonacci sequence",
+            "Prime numbers",
+            "Sum of array"
+        ],
+        "correctAnswer": 1,
+        "points": 10
+    },
+    {
+        "id": 2,
+        "language": "javascript",
+        "code": "const arr = [1, 2, 3, 4, 5];\nconst result = arr.reduce((acc, val) => acc + val, 0);\nconsole.log(result);",
+        "displayTime": 8,
+        "question": "What will be logged to the console?",
+        "options": [
+            "15",
+            "12345",
+            "undefined",
+            "0"
+        ],
+        "correctAnswer": 0,
+        "points": 10
+    },
+    {
+        "id": 3,
+        "language": "c",
+        "code": "#include <stdio.h>\nint main() {\n    int x = 5;\n    int *ptr = &x;\n    printf(\"%d\", *ptr);\n    return 0;\n}",
+        "displayTime": 12,
+        "question": "What will this program print?",
+        "options": [
+            "5",
+            "Address of x",
+            "0",
+            "Compilation error"
+        ],
+        "correctAnswer": 0,
+        "points": 15
+    },
+    {
+        "id": 4,
+        "language": "typescript",
+        "code": "type User = {\n    name: string;\n    age?: number;\n};\nconst user: User = { name: \"Alice\" };",
+        "displayTime": 10,
+        "question": "Is the 'age' property required?",
+        "options": [
+            "Yes",
+            "No",
+            "Only in strict mode",
+            "Depends on compiler"
+        ],
+        "correctAnswer": 1,
+        "points": 10
+    },
+    {
+        "id": 5,
+        "language": "cpp",
+        "code": "class Base {\npublic:\n    virtual void show() { cout << \"Base\"; }\n};\nclass Derived : public Base {\npublic:\n    void show() { cout << \"Derived\"; }\n};",
+        "displayTime": 15,
+        "question": "What concept is demonstrated here?",
+        "options": [
+            "Encapsulation",
+            "Polymorphism",
+            "Abstraction",
+            "Inheritance only"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 6,
+        "language": "asm",
+        "code": "MOV AX, 5\nMOV BX, 3\nADD AX, BX\nMOV CX, AX",
+        "displayTime": 12,
+        "question": "What value will be in register CX?",
+        "options": [
+            "5",
+            "3",
+            "8",
+            "15"
+        ],
+        "correctAnswer": 2,
+        "points": 20
+    }
+]
