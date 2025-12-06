@@ -7,9 +7,11 @@ interface QuizScreenProps {
     level: Level;
     participants: Participant[];
     onSubmit: (answers: Record<string, number>) => void;
+    currentIndex: number;
+    totalLevels: number;
 }
 
-export default function QuizScreen({ level, participants, onSubmit }: QuizScreenProps) {
+export default function QuizScreen({ level, participants, onSubmit, currentIndex, totalLevels }: QuizScreenProps) {
     const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
 
     const handleAnswerSelect = (participantId: string, optionIndex: number) => {
@@ -24,15 +26,35 @@ export default function QuizScreen({ level, participants, onSubmit }: QuizScreen
     };
 
     const allAnswered = participants.every(p => selectedAnswers[p.id] !== undefined);
+    const globalProgress = ((currentIndex - 1) / totalLevels) * 100;
 
     return (
         <div className="min-h-screen flex items-center justify-center p-8">
             <div className="max-w-5xl w-full animate-fade-in">
+                {/* Global Progress */}
+                <div className="mb-8">
+                    <div className="flex justify-between text-sm text-gray-400 mb-2">
+                        <span>Progress</span>
+                        <span>{Math.round(globalProgress)}%</span>
+                    </div>
+                    <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div
+                            className="h-full bg-blue-600 transition-all duration-500"
+                            style={{ width: `${globalProgress}%` }}
+                        />
+                    </div>
+                </div>
+
                 {/* Question */}
                 <div className="card mb-8">
-                    <div className="flex items-center gap-3 mb-4">
-                        <span className="text-4xl">❓</span>
-                        <h2 className="text-3xl font-bold text-blue-300">Question</h2>
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="flex items-center gap-3">
+                            <span className="text-4xl">❓</span>
+                            <h2 className="text-3xl font-bold text-blue-300">Question</h2>
+                        </div>
+                        <span className="text-xl font-bold text-gray-400">
+                            Level {currentIndex} <span className="text-gray-600 text-base">of {totalLevels}</span>
+                        </span>
                     </div>
                     <p className="text-2xl text-gray-200">{level.question}</p>
                 </div>
@@ -80,8 +102,8 @@ export default function QuizScreen({ level, participants, onSubmit }: QuizScreen
                                             key={index}
                                             onClick={() => handleAnswerSelect(participant.id, index)}
                                             className={`p-3 rounded-lg font-semibold transition-all ${selectedAnswers[participant.id] === index
-                                                    ? 'bg-blue-500 text-white scale-105 shadow-lg shadow-blue-500/50'
-                                                    : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
+                                                ? 'bg-blue-500 text-white scale-105 shadow-lg shadow-blue-500/50'
+                                                : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             {String.fromCharCode(65 + index)}
@@ -96,8 +118,8 @@ export default function QuizScreen({ level, participants, onSubmit }: QuizScreen
                         onClick={handleSubmit}
                         disabled={!allAnswered}
                         className={`mt-8 w-full btn text-lg py-4 ${allAnswered
-                                ? 'btn-primary'
-                                : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                            ? 'btn-primary'
+                            : 'bg-gray-600 text-gray-400 cursor-not-allowed'
                             }`}
                     >
                         {allAnswered ? 'Submit Answers ✓' : 'Waiting for all answers...'}

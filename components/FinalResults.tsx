@@ -28,6 +28,19 @@ export default function FinalResults({ participants, onExport, onReset }: FinalR
                     <p className="text-2xl text-gray-300">Final Results</p>
                 </div>
 
+                {/* Winner Declaration */}
+                {sortedParticipants.length > 0 && (
+                    <div className="text-center mb-12 animate-bounce-in">
+                        <div className="text-2xl text-yellow-400 font-bold mb-2">🏆 WINNER 🏆</div>
+                        <div className="text-5xl font-bold text-white">
+                            {sortedParticipants[0].name}
+                        </div>
+                        <div className="text-xl text-blue-300 mt-2">
+                            with {sortedParticipants[0].totalScore} points
+                        </div>
+                    </div>
+                )}
+
                 {/* Podium */}
                 {sortedParticipants.length >= 3 && (
                     <div className="mb-12">
@@ -67,12 +80,12 @@ export default function FinalResults({ participants, onExport, onReset }: FinalR
                             <div
                                 key={participant.id}
                                 className={`p-5 rounded-lg border-2 animate-slide-in ${index === 0
-                                        ? 'bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 border-yellow-400'
-                                        : index === 1
-                                            ? 'bg-gradient-to-r from-gray-400/20 to-gray-500/20 border-gray-400'
-                                            : index === 2
-                                                ? 'bg-gradient-to-r from-orange-400/20 to-orange-600/20 border-orange-400'
-                                                : 'bg-slate-700/50 border-blue-400/30'
+                                    ? 'bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 border-yellow-400'
+                                    : index === 1
+                                        ? 'bg-gradient-to-r from-gray-400/20 to-gray-500/20 border-gray-400'
+                                        : index === 2
+                                            ? 'bg-gradient-to-r from-orange-400/20 to-orange-600/20 border-orange-400'
+                                            : 'bg-slate-700/50 border-blue-400/30'
                                     }`}
                             >
                                 <div className="flex items-center justify-between">

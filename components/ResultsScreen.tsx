@@ -7,17 +7,40 @@ interface ResultsScreenProps {
     participants: Participant[];
     answers: Record<string, number>;
     onContinue: () => void;
+    currentIndex: number;
+    totalLevels: number;
 }
 
-export default function ResultsScreen({ level, participants, answers, onContinue }: ResultsScreenProps) {
+export default function ResultsScreen({ level, participants, answers, onContinue, currentIndex, totalLevels }: ResultsScreenProps) {
+    const globalProgress = ((currentIndex) / totalLevels) * 100;
+
     return (
         <div className="min-h-screen flex items-center justify-center p-8">
             <div className="max-w-5xl w-full animate-fade-in">
+                {/* Global Progress */}
+                <div className="mb-8">
+                    <div className="flex justify-between text-sm text-gray-400 mb-2">
+                        <span>Progress</span>
+                        <span>{Math.round(globalProgress)}%</span>
+                    </div>
+                    <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div
+                            className="h-full bg-blue-600 transition-all duration-500"
+                            style={{ width: `${globalProgress}%` }}
+                        />
+                    </div>
+                </div>
+
                 {/* Correct Answer */}
                 <div className="card mb-8">
-                    <div className="flex items-center gap-3 mb-4">
-                        <span className="text-4xl">✅</span>
-                        <h2 className="text-3xl font-bold text-green-400">Correct Answer</h2>
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="flex items-center gap-3">
+                            <span className="text-4xl">✅</span>
+                            <h2 className="text-3xl font-bold text-green-400">Correct Answer</h2>
+                        </div>
+                        <span className="text-xl font-bold text-gray-400">
+                            Level {currentIndex} <span className="text-gray-600 text-base">of {totalLevels}</span>
+                        </span>
                     </div>
 
                     <div className="p-6 rounded-lg bg-green-500/10 border-2 border-green-400">
@@ -47,8 +70,8 @@ export default function ResultsScreen({ level, participants, answers, onContinue
                                 <div
                                     key={participant.id}
                                     className={`p-4 rounded-lg border-2 animate-slide-in ${isCorrect
-                                            ? 'bg-green-500/10 border-green-400'
-                                            : 'bg-red-500/10 border-red-400'
+                                        ? 'bg-green-500/10 border-green-400'
+                                        : 'bg-red-500/10 border-red-400'
                                         }`}
                                 >
                                     <div className="flex items-center justify-between">

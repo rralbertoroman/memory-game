@@ -140,7 +140,12 @@ export default function Home() {
 
       {gamePhase === 'code-display' && currentLevel && (
         <>
-          <CodeDisplay level={currentLevel} onTimeUp={handleCodeTimeUp} />
+          <CodeDisplay
+            level={currentLevel}
+            onTimeUp={handleCodeTimeUp}
+            currentIndex={session!.currentLevelIndex + 1}
+            totalLevels={session!.levels.length}
+          />
           {session && <Scoreboard participants={session.participants} />}
         </>
       )}
@@ -151,6 +156,8 @@ export default function Home() {
             level={currentLevel}
             participants={session.participants}
             onSubmit={handleQuizSubmit}
+            currentIndex={session!.currentLevelIndex + 1}
+            totalLevels={session!.levels.length}
           />
           <Scoreboard participants={session.participants} />
         </>
@@ -163,6 +170,8 @@ export default function Home() {
             participants={session.participants}
             answers={currentAnswers}
             onContinue={handleContinue}
+            currentIndex={session!.currentLevelIndex + 1}
+            totalLevels={session!.levels.length}
           />
           <Scoreboard participants={session.participants} />
         </>

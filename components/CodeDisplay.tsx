@@ -6,6 +6,8 @@ import { Level } from '@/types';
 interface CodeDisplayProps {
     level: Level;
     onTimeUp: () => void;
+    currentIndex: number;
+    totalLevels: number;
 }
 
 const languageColors: Record<string, string> = {
@@ -26,7 +28,7 @@ const languageLabels: Record<string, string> = {
     asm: 'Assembly'
 };
 
-export default function CodeDisplay({ level, onTimeUp }: CodeDisplayProps) {
+export default function CodeDisplay({ level, onTimeUp, currentIndex, totalLevels }: CodeDisplayProps) {
     const [timeLeft, setTimeLeft] = useState(level.displayTime);
 
     useEffect(() => {
@@ -47,18 +49,33 @@ export default function CodeDisplay({ level, onTimeUp }: CodeDisplayProps) {
     }, [level.id, level.displayTime, onTimeUp]);
 
     const progress = (timeLeft / level.displayTime) * 100;
+    const globalProgress = ((currentIndex - 1) / totalLevels) * 100;
 
     return (
         <div className="min-h-screen flex items-center justify-center p-8">
             <div className="max-w-4xl w-full animate-fade-in">
+                {/* Global Progress */}
+                <div className="mb-8">
+                    <div className="flex justify-between text-sm text-gray-400 mb-2">
+                        <span>Progress</span>
+                        <span>{Math.round(globalProgress)}%</span>
+                    </div>
+                    <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div
+                            className="h-full bg-blue-600 transition-all duration-500"
+                            style={{ width: `${globalProgress}%` }}
+                        />
+                    </div>
+                </div>
+
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">
-                    <div className="flex items-center gap-4">
-                        <span className={`px-4 py-2 rounded-full text-white font-semibold ${languageColors[level.language]}`}>
+                    <div className="flex items-center gap-8">
+                        <span className={`flex px-8 py-4 rounded-full items-center justify-center w-fit h-fit text-white font-bold text-4xl tracking-wider shadow-lg ${languageColors[level.language]}`}>
                             {languageLabels[level.language]}
                         </span>
-                        <span className="text-2xl font-bold text-gray-300">
-                            Level {level.id}
+                        <span className="text-3xl font-bold text-gray-300">
+                            Level {currentIndex} <span className="text-gray-500 text-xl">of {totalLevels}</span>
                         </span>
                     </div>
 
