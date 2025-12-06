@@ -8,15 +8,29 @@ import QuizScreen from '@/components/QuizScreen';
 import ResultsScreen from '@/components/ResultsScreen';
 import FinalResults from '@/components/FinalResults';
 import Scoreboard from '@/components/Scoreboard';
+import ResetButton from '@/components/ResetButton';
 import { exportSession } from '@/utils/sessionExport';
+import { saveSessionToFile, clearSessionFile, downloadCurrentSession, loadSessionFromFile } from '@/utils/sessionStorage';
 import levelsData from '@/data/levels.json';
 
 export default function Home() {
   const [session, setSession] = useState<Session | null>(null);
   const [gamePhase, setGamePhase] = useState<GamePhase>('setup');
   const [currentAnswers, setCurrentAnswers] = useState<Record<string, number>>({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const levels: Level[] = levelsData as Level[];
+
+  // Restore session on mount
+  useEffect(() => {
+    const savedData = loadSessionFromFile();
+    if (savedData) {
+      setSession(savedData.session);
+      setGamePhase(savedData.gamePhase);
+      setCurrentAnswers(savedData.currentAnswers);
+    }
+    setIsLoading(false);
+  }, []);
 
   const handleStartGame = (participants: Participant[]) => {
     const newSession: Session = {
@@ -29,6 +43,7 @@ export default function Home() {
     };
 
     setSession(newSession);
+    saveSessionToFile(newSession, 'code-display');
     setGamePhase('code-display');
   };
 
@@ -62,11 +77,13 @@ export default function Home() {
       };
     });
 
-    setSession({
+    const updatedSession = {
       ...session,
       participants: updatedParticipants
-    });
+    };
 
+    setSession(updatedSession);
+    saveSessionToFile(updatedSession, 'results', answers);
     setGamePhase('results');
   };
 
@@ -74,28 +91,31 @@ export default function Home() {
     if (!session) return;
 
     if (session.currentLevelIndex < levels.length - 1) {
-      setSession({
+      const updatedSession = {
         ...session,
         currentLevelIndex: session.currentLevelIndex + 1
-      });
+      };
+      setSession(updatedSession);
+      saveSessionToFile(updatedSession, 'code-display');
       setCurrentAnswers({});
       setGamePhase('code-display');
     } else {
-      setSession({
+      const finishedSession = {
         ...session,
-        status: 'finished'
-      });
+        status: 'finished' as const
+      };
+      setSession(finishedSession);
+      saveSessionToFile(finishedSession, 'final');
       setGamePhase('final');
     }
   };
 
   const handleExport = () => {
-    if (session) {
-      exportSession(session);
-    }
+    downloadCurrentSession();
   };
 
   const handleReset = () => {
+    clearSessionFile();
     setSession(null);
     setGamePhase('setup');
     setCurrentAnswers({});
@@ -105,6 +125,11 @@ export default function Home() {
 
   return (
     <main className="relative">
+      {/* Reset button - always visible except on setup screen */}
+      {gamePhase !== 'setup' && (
+        <ResetButton onReset={handleReset} />
+      )}
+
       {gamePhase === 'setup' && (
         <SetupScreen onStart={handleStartGame} />
       )}
