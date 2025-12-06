@@ -11,6 +11,7 @@ import Scoreboard from '@/components/Scoreboard';
 import ResetButton from '@/components/ResetButton';
 import { exportSession } from '@/utils/sessionExport';
 import { saveSessionToFile, clearSessionFile, downloadCurrentSession, loadSessionFromFile } from '@/utils/sessionStorage';
+import { selectRandomLevels } from '@/utils/levelSelection';
 import levelsData from '@/data/levels.json';
 
 export default function Home() {
@@ -19,7 +20,7 @@ export default function Home() {
   const [currentAnswers, setCurrentAnswers] = useState<Record<string, number>>({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const levels: Level[] = levelsData as Level[];
+  const allLevels: Level[] = levelsData as Level[];
 
   // Restore session on mount
   useEffect(() => {
@@ -33,11 +34,14 @@ export default function Home() {
   }, []);
 
   const handleStartGame = (participants: Participant[]) => {
+    // Select 5 random levels from each difficulty tier (15 total)
+    const selectedLevels = selectRandomLevels(allLevels);
+
     const newSession: Session = {
       id: `session-${Date.now()}`,
       timestamp: new Date().toISOString(),
       participants,
-      levels,
+      levels: selectedLevels,
       currentLevelIndex: 0,
       status: 'playing'
     };
@@ -57,7 +61,7 @@ export default function Home() {
     setCurrentAnswers(answers);
 
     // Update participant scores
-    const currentLevel = levels[session.currentLevelIndex];
+    const currentLevel = session.levels[session.currentLevelIndex];
     const updatedParticipants = session.participants.map(participant => {
       const selectedOption = answers[participant.id];
       const isCorrect = selectedOption === currentLevel.correctAnswer;
@@ -90,7 +94,7 @@ export default function Home() {
   const handleContinue = () => {
     if (!session) return;
 
-    if (session.currentLevelIndex < levels.length - 1) {
+    if (session.currentLevelIndex < session.levels.length - 1) {
       const updatedSession = {
         ...session,
         currentLevelIndex: session.currentLevelIndex + 1
@@ -121,7 +125,7 @@ export default function Home() {
     setCurrentAnswers({});
   };
 
-  const currentLevel = session ? levels[session.currentLevelIndex] : null;
+  const currentLevel = session ? session.levels[session.currentLevelIndex] : null;
 
   return (
     <main className="relative">

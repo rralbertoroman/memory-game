@@ -16,9 +16,159 @@
     },
     {
         "id": 2,
+        "language": "python",
+        "code": "numbers = [1, 2, 3, 4, 5]\nresult = [x**2 for x in numbers if x % 2 == 0]",
+        "displayTime": 10,
+        "question": "What will be the value of result?",
+        "options": [
+            "[4, 16]",
+            "[1, 9, 25]",
+            "[2, 4]",
+            "[1, 4, 9, 16, 25]"
+        ],
+        "correctAnswer": 0,
+        "points": 10
+    },
+    {
+        "id": 3,
+        "language": "python",
+        "code": "def mystery(s):\n    return s[::-1]\nprint(mystery('hello'))",
+        "displayTime": 8,
+        "question": "What will be printed?",
+        "options": [
+            "hello",
+            "olleh",
+            "h",
+            "Error"
+        ],
+        "correctAnswer": 1,
+        "points": 10
+    },
+    {
+        "id": 4,
+        "language": "python",
+        "code": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return f'{self.name} says Woof!'",
+        "displayTime": 12,
+        "question": "What OOP concept is demonstrated?",
+        "options": [
+            "Inheritance",
+            "Encapsulation",
+            "Polymorphism",
+            "Abstraction"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 5,
+        "language": "python",
+        "code": "def decorator(func):\n    def wrapper():\n        print('Before')\n        func()\n        print('After')\n    return wrapper",
+        "displayTime": 12,
+        "question": "What is this pattern called?",
+        "options": [
+            "Generator",
+            "Decorator",
+            "Iterator",
+            "Context Manager"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 6,
+        "language": "python",
+        "code": "data = {'a': 1, 'b': 2, 'c': 3}\nresult = {v: k for k, v in data.items()}",
+        "displayTime": 10,
+        "question": "What does this create?",
+        "options": [
+            "Same dict",
+            "Reversed dict",
+            "List",
+            "Error"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 7,
+        "language": "python",
+        "code": "import asyncio\nasync def main():\n    await asyncio.sleep(1)\n    return 'Done'",
+        "displayTime": 10,
+        "question": "What programming paradigm is this?",
+        "options": [
+            "Synchronous",
+            "Asynchronous",
+            "Multithreaded",
+            "Parallel"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 8,
+        "language": "python",
+        "code": "def gen():\n    yield 1\n    yield 2\n    yield 3\nfor x in gen():\n    print(x)",
+        "displayTime": 12,
+        "question": "What is gen()?",
+        "options": [
+            "Function",
+            "Generator",
+            "Iterator",
+            "List"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 9,
+        "language": "python",
+        "code": "with open('file.txt', 'r') as f:\n    content = f.read()\n# File automatically closed here",
+        "displayTime": 10,
+        "question": "What is the 'with' statement called?",
+        "options": [
+            "Loop",
+            "Context Manager",
+            "Exception Handler",
+            "Decorator"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 10,
+        "language": "python",
+        "code": "from functools import reduce\nnums = [1, 2, 3, 4]\nresult = reduce(lambda x, y: x * y, nums)",
+        "displayTime": 12,
+        "question": "What will be the value of result?",
+        "options": [
+            "10",
+            "24",
+            "4",
+            "Error"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 11,
+        "language": "python",
+        "code": "class Meta(type):\n    def __new__(cls, name, bases, attrs):\n        return super().__new__(cls, name, bases, attrs)",
+        "displayTime": 15,
+        "question": "What is this?",
+        "options": [
+            "Class",
+            "Metaclass",
+            "Decorator",
+            "Abstract Class"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 12,
         "language": "javascript",
         "code": "const arr = [1, 2, 3, 4, 5];\nconst result = arr.reduce((acc, val) => acc + val, 0);\nconsole.log(result);",
-        "displayTime": 8,
+        "displayTime": 10,
         "question": "What will be logged to the console?",
         "options": [
             "15",
@@ -30,24 +180,159 @@
         "points": 10
     },
     {
-        "id": 3,
-        "language": "c",
-        "code": "#include <stdio.h>\nint main() {\n    int x = 5;\n    int *ptr = &x;\n    printf(\"%d\", *ptr);\n    return 0;\n}",
-        "displayTime": 12,
-        "question": "What will this program print?",
+        "id": 13,
+        "language": "javascript",
+        "code": "const obj = { a: 1, b: 2 };\nconst { a, b } = obj;\nconsole.log(a, b);",
+        "displayTime": 8,
+        "question": "What is this syntax called?",
         "options": [
-            "5",
-            "Address of x",
-            "0",
-            "Compilation error"
+            "Spread",
+            "Destructuring",
+            "Rest",
+            "Cloning"
         ],
-        "correctAnswer": 0,
+        "correctAnswer": 1,
+        "points": 10
+    },
+    {
+        "id": 14,
+        "language": "javascript",
+        "code": "const arr = [1, 2, 3];\nconst newArr = [...arr, 4, 5];\nconsole.log(newArr.length);",
+        "displayTime": 10,
+        "question": "What will be logged?",
+        "options": [
+            "3",
+            "5",
+            "2",
+            "undefined"
+        ],
+        "correctAnswer": 1,
+        "points": 10
+    },
+    {
+        "id": 15,
+        "language": "javascript",
+        "code": "function outer() {\n    let count = 0;\n    return function() {\n        return ++count;\n    }\n}",
+        "displayTime": 12,
+        "question": "What concept is demonstrated?",
+        "options": [
+            "Callback",
+            "Closure",
+            "Promise",
+            "IIFE"
+        ],
+        "correctAnswer": 1,
         "points": 15
     },
     {
-        "id": 4,
+        "id": 16,
+        "language": "javascript",
+        "code": "const promise = new Promise((resolve, reject) => {\n    setTimeout(() => resolve('Done'), 1000);\n});",
+        "displayTime": 12,
+        "question": "What does this create?",
+        "options": [
+            "Callback",
+            "Promise",
+            "Async Function",
+            "Generator"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 17,
+        "language": "javascript",
+        "code": "const nums = [1, 2, 3];\nconst doubled = nums.map(x => x * 2);\nconsole.log(doubled);",
+        "displayTime": 10,
+        "question": "What will be logged?",
+        "options": [
+            "[1, 2, 3]",
+            "[2, 4, 6]",
+            "[1, 4, 9]",
+            "6"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 18,
+        "language": "javascript",
+        "code": "async function fetchData() {\n    const data = await fetch('/api');\n    return data.json();\n}",
+        "displayTime": 12,
+        "question": "What does 'await' do?",
+        "options": [
+            "Delays execution",
+            "Waits for Promise",
+            "Creates Promise",
+            "Throws error"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 19,
+        "language": "javascript",
+        "code": "class Animal {\n    constructor(name) {\n        this.name = name;\n    }\n    speak() {\n        console.log(`${this.name} makes a sound`);\n    }\n}",
+        "displayTime": 12,
+        "question": "What is 'this' in the speak method?",
+        "options": [
+            "Window",
+            "Instance",
+            "Class",
+            "undefined"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 20,
+        "language": "javascript",
+        "code": "const obj = { x: 1 };\nObject.freeze(obj);\nobj.x = 2;\nconsole.log(obj.x);",
+        "displayTime": 12,
+        "question": "What will be logged?",
+        "options": [
+            "2",
+            "1",
+            "undefined",
+            "Error"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 21,
+        "language": "javascript",
+        "code": "const sym1 = Symbol('id');\nconst sym2 = Symbol('id');\nconsole.log(sym1 === sym2);",
+        "displayTime": 10,
+        "question": "What will be logged?",
+        "options": [
+            "true",
+            "false",
+            "undefined",
+            "Error"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 22,
+        "language": "javascript",
+        "code": "const proxy = new Proxy({}, {\n    get: (target, prop) => {\n        return prop in target ? target[prop] : 'default';\n    }\n});",
+        "displayTime": 15,
+        "question": "What is this pattern?",
+        "options": [
+            "Observer",
+            "Proxy",
+            "Decorator",
+            "Factory"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 23,
         "language": "typescript",
-        "code": "type User = {\n    name: string;\n    age?: number;\n};\nconst user: User = { name: \"Alice\" };",
+        "code": "type User = {\n    name: string;\n    age?: number;\n};\nconst user: User = { name: 'Alice' };",
         "displayTime": 10,
         "question": "Is the 'age' property required?",
         "options": [
@@ -60,7 +345,322 @@
         "points": 10
     },
     {
-        "id": 5,
+        "id": 24,
+        "language": "typescript",
+        "code": "interface Shape {\n    area(): number;\n}\nclass Circle implements Shape {\n    area() { return 3.14; }\n}",
+        "displayTime": 12,
+        "question": "What is Shape?",
+        "options": [
+            "Class",
+            "Interface",
+            "Type",
+            "Abstract Class"
+        ],
+        "correctAnswer": 1,
+        "points": 10
+    },
+    {
+        "id": 25,
+        "language": "typescript",
+        "code": "function identity<T>(arg: T): T {\n    return arg;\n}",
+        "displayTime": 10,
+        "question": "What is <T>?",
+        "options": [
+            "Template",
+            "Generic",
+            "Type Guard",
+            "Decorator"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 26,
+        "language": "typescript",
+        "code": "type ReadOnly<T> = {\n    readonly [K in keyof T]: T[K];\n};",
+        "displayTime": 12,
+        "question": "What is this?",
+        "options": [
+            "Interface",
+            "Mapped Type",
+            "Union",
+            "Intersection"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 27,
+        "language": "typescript",
+        "code": "type A = string | number;\ntype B = string & number;",
+        "displayTime": 10,
+        "question": "What is type B?",
+        "options": [
+            "string",
+            "number",
+            "never",
+            "any"
+        ],
+        "correctAnswer": 2,
+        "points": 20
+    },
+    {
+        "id": 28,
+        "language": "typescript",
+        "code": "enum Color {\n    Red,\n    Green,\n    Blue\n}\nconst c: Color = Color.Green;",
+        "displayTime": 10,
+        "question": "What is the value of c?",
+        "options": [
+            "0",
+            "1",
+            "2",
+            "'Green'"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 29,
+        "language": "typescript",
+        "code": "function isString(x: any): x is string {\n    return typeof x === 'string';\n}",
+        "displayTime": 12,
+        "question": "What is 'x is string'?",
+        "options": [
+            "Type Assertion",
+            "Type Guard",
+            "Type Alias",
+            "Generic"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 30,
+        "language": "typescript",
+        "code": "type Partial<T> = {\n    [P in keyof T]?: T[P];\n};",
+        "displayTime": 12,
+        "question": "What does Partial do?",
+        "options": [
+            "Makes all required",
+            "Makes all optional",
+            "Removes properties",
+            "Adds properties"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 31,
+        "language": "typescript",
+        "code": "const tuple: [string, number] = ['hello', 42];",
+        "displayTime": 8,
+        "question": "What is this type?",
+        "options": [
+            "Array",
+            "Tuple",
+            "Object",
+            "Union"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 32,
+        "language": "typescript",
+        "code": "type Extract<T, U> = T extends U ? T : never;",
+        "displayTime": 12,
+        "question": "What is this?",
+        "options": [
+            "Mapped Type",
+            "Conditional Type",
+            "Union Type",
+            "Intersection"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 33,
+        "language": "typescript",
+        "code": "declare module 'my-module' {\n    export function doSomething(): void;\n}",
+        "displayTime": 12,
+        "question": "What is this?",
+        "options": [
+            "Import",
+            "Ambient Declaration",
+            "Type Definition",
+            "Module Export"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 34,
+        "language": "c",
+        "code": "#include <stdio.h>\nint main() {\n    int x = 5;\n    int *ptr = &x;\n    printf(\"%d\", *ptr);\n    return 0;\n}",
+        "displayTime": 12,
+        "question": "What will this program print?",
+        "options": [
+            "5",
+            "Address of x",
+            "0",
+            "Compilation error"
+        ],
+        "correctAnswer": 0,
+        "points": 10
+    },
+    {
+        "id": 35,
+        "language": "c",
+        "code": "int arr[5] = {1, 2, 3, 4, 5};\nint *p = arr;\nprintf(\"%d\", *(p + 2));",
+        "displayTime": 10,
+        "question": "What will be printed?",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "correctAnswer": 2,
+        "points": 10
+    },
+    {
+        "id": 36,
+        "language": "c",
+        "code": "char str[] = \"Hello\";\nprintf(\"%zu\", sizeof(str));",
+        "displayTime": 10,
+        "question": "What will be printed?",
+        "options": [
+            "5",
+            "6",
+            "4",
+            "Undefined"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 37,
+        "language": "c",
+        "code": "int x = 10;\nint y = ++x;\nprintf(\"%d %d\", x, y);",
+        "displayTime": 10,
+        "question": "What will be printed?",
+        "options": [
+            "10 10",
+            "11 11",
+            "10 11",
+            "11 10"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 38,
+        "language": "c",
+        "code": "struct Point {\n    int x;\n    int y;\n};\nstruct Point p = {10, 20};",
+        "displayTime": 12,
+        "question": "What is struct Point?",
+        "options": [
+            "Class",
+            "Structure",
+            "Union",
+            "Array"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 39,
+        "language": "c",
+        "code": "void swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}",
+        "displayTime": 12,
+        "question": "What does this function do?",
+        "options": [
+            "Copies values",
+            "Swaps values",
+            "Adds values",
+            "Nothing"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 40,
+        "language": "c",
+        "code": "int *ptr = (int*)malloc(sizeof(int) * 5);\nfree(ptr);",
+        "displayTime": 10,
+        "question": "What is malloc?",
+        "options": [
+            "Stack allocation",
+            "Dynamic allocation",
+            "Static allocation",
+            "Automatic allocation"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 41,
+        "language": "c",
+        "code": "#define MAX(a,b) ((a) > (b) ? (a) : (b))\nint result = MAX(5, 10);",
+        "displayTime": 10,
+        "question": "What is #define?",
+        "options": [
+            "Function",
+            "Macro",
+            "Variable",
+            "Constant"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 42,
+        "language": "c",
+        "code": "union Data {\n    int i;\n    float f;\n    char c;\n};",
+        "displayTime": 12,
+        "question": "What is special about union?",
+        "options": [
+            "Stores all",
+            "Shares memory",
+            "Dynamic size",
+            "Thread-safe"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 43,
+        "language": "c",
+        "code": "int (*func_ptr)(int, int);\nfunc_ptr = &add;",
+        "displayTime": 12,
+        "question": "What is func_ptr?",
+        "options": [
+            "Function",
+            "Function Pointer",
+            "Array",
+            "Struct"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 44,
+        "language": "c",
+        "code": "volatile int flag = 0;\nwhile(flag == 0) {\n    // wait\n}",
+        "displayTime": 12,
+        "question": "What does 'volatile' mean?",
+        "options": [
+            "Constant",
+            "Can change externally",
+            "Thread-safe",
+            "Optimized"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 45,
         "language": "cpp",
         "code": "class Base {\npublic:\n    virtual void show() { cout << \"Base\"; }\n};\nclass Derived : public Base {\npublic:\n    void show() { cout << \"Derived\"; }\n};",
         "displayTime": 15,
@@ -75,7 +675,157 @@
         "points": 15
     },
     {
-        "id": 6,
+        "id": 46,
+        "language": "cpp",
+        "code": "template <typename T>\nT max(T a, T b) {\n    return (a > b) ? a : b;\n}",
+        "displayTime": 12,
+        "question": "What is this?",
+        "options": [
+            "Macro",
+            "Template",
+            "Overload",
+            "Inline"
+        ],
+        "correctAnswer": 1,
+        "points": 15
+    },
+    {
+        "id": 47,
+        "language": "cpp",
+        "code": "class MyClass {\npublic:\n    MyClass() { }\n    ~MyClass() { }\n};",
+        "displayTime": 10,
+        "question": "What is ~MyClass()?",
+        "options": [
+            "Constructor",
+            "Destructor",
+            "Operator",
+            "Friend"
+        ],
+        "correctAnswer": 1,
+        "points": 10
+    },
+    {
+        "id": 48,
+        "language": "cpp",
+        "code": "int &ref = x;\nref = 10;",
+        "displayTime": 8,
+        "question": "What is ref?",
+        "options": [
+            "Pointer",
+            "Reference",
+            "Copy",
+            "Constant"
+        ],
+        "correctAnswer": 1,
+        "points": 10
+    },
+    {
+        "id": 49,
+        "language": "cpp",
+        "code": "class A {\nprivate:\n    int x;\npublic:\n    friend class B;\n};",
+        "displayTime": 12,
+        "question": "What can class B do?",
+        "options": [
+            "Nothing special",
+            "Access private members",
+            "Inherit from A",
+            "Override methods"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 50,
+        "language": "cpp",
+        "code": "void func(int &&x) {\n    // x is rvalue reference\n}",
+        "displayTime": 10,
+        "question": "What is &&?",
+        "options": [
+            "Logical AND",
+            "Rvalue Reference",
+            "Pointer",
+            "Address"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 51,
+        "language": "cpp",
+        "code": "auto lambda = [](int x) { return x * 2; };\nint result = lambda(5);",
+        "displayTime": 12,
+        "question": "What is this syntax?",
+        "options": [
+            "Function",
+            "Lambda",
+            "Macro",
+            "Template"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 52,
+        "language": "cpp",
+        "code": "std::unique_ptr<int> ptr = std::make_unique<int>(42);",
+        "displayTime": 12,
+        "question": "What is unique_ptr?",
+        "options": [
+            "Raw pointer",
+            "Smart pointer",
+            "Reference",
+            "Array"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 53,
+        "language": "cpp",
+        "code": "class Abstract {\npublic:\n    virtual void func() = 0;\n};",
+        "displayTime": 10,
+        "question": "What is '= 0'?",
+        "options": [
+            "Initialization",
+            "Pure virtual",
+            "Delete",
+            "Default"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 54,
+        "language": "cpp",
+        "code": "constexpr int square(int x) {\n    return x * x;\n}",
+        "displayTime": 10,
+        "question": "What does constexpr mean?",
+        "options": [
+            "Constant",
+            "Compile-time",
+            "Runtime",
+            "Inline"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 55,
+        "language": "cpp",
+        "code": "template<typename... Args>\nvoid print(Args... args) {\n    (std::cout << ... << args);\n}",
+        "displayTime": 15,
+        "question": "What is this?",
+        "options": [
+            "Template",
+            "Variadic Template",
+            "Overload",
+            "Macro"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 56,
         "language": "asm",
         "code": "MOV AX, 5\nMOV BX, 3\nADD AX, BX\nMOV CX, AX",
         "displayTime": 12,
@@ -87,6 +837,156 @@
             "15"
         ],
         "correctAnswer": 2,
+        "points": 20
+    },
+    {
+        "id": 57,
+        "language": "asm",
+        "code": "MOV AX, 10\nSUB AX, 3",
+        "displayTime": 8,
+        "question": "What value will be in AX?",
+        "options": [
+            "10",
+            "3",
+            "7",
+            "13"
+        ],
+        "correctAnswer": 2,
+        "points": 15
+    },
+    {
+        "id": 58,
+        "language": "asm",
+        "code": "MOV AX, 4\nMUL BX  ; BX contains 3",
+        "displayTime": 10,
+        "question": "What will be in AX after MUL?",
+        "options": [
+            "4",
+            "3",
+            "12",
+            "7"
+        ],
+        "correctAnswer": 2,
+        "points": 20
+    },
+    {
+        "id": 59,
+        "language": "asm",
+        "code": "PUSH AX\nPUSH BX\nPOP CX\nPOP DX",
+        "displayTime": 12,
+        "question": "If AX=1, BX=2, what is CX?",
+        "options": [
+            "1",
+            "2",
+            "0",
+            "undefined"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 60,
+        "language": "asm",
+        "code": "CMP AX, BX\nJE EQUAL\nMOV CX, 0\nEQUAL: MOV CX, 1",
+        "displayTime": 15,
+        "question": "What does JE do?",
+        "options": [
+            "Jump always",
+            "Jump if equal",
+            "Jump if error",
+            "Jump if not equal"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 61,
+        "language": "asm",
+        "code": "MOV AX, [BX]\nADD AX, 5",
+        "displayTime": 10,
+        "question": "What does [BX] mean?",
+        "options": [
+            "Value of BX",
+            "Memory at BX",
+            "Address of BX",
+            "BX register"
+        ],
+        "correctAnswer": 1,
+        "points": 20
+    },
+    {
+        "id": 62,
+        "language": "asm",
+        "code": "SHL AX, 1  ; AX contains 4",
+        "displayTime": 10,
+        "question": "What will be in AX?",
+        "options": [
+            "4",
+            "2",
+            "8",
+            "1"
+        ],
+        "correctAnswer": 2,
+        "points": 25
+    },
+    {
+        "id": 63,
+        "language": "asm",
+        "code": "AND AX, BX  ; AX=5, BX=3",
+        "displayTime": 10,
+        "question": "What will be in AX?",
+        "options": [
+            "5",
+            "3",
+            "1",
+            "8"
+        ],
+        "correctAnswer": 2,
+        "points": 25
+    },
+    {
+        "id": 64,
+        "language": "asm",
+        "code": "CALL SUBROUTINE\nRET",
+        "displayTime": 10,
+        "question": "What does CALL do?",
+        "options": [
+            "Jump",
+            "Jump and save return",
+            "Return",
+            "Loop"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 65,
+        "language": "asm",
+        "code": "LOOP START  ; CX contains 5",
+        "displayTime": 10,
+        "question": "How many times will it loop?",
+        "options": [
+            "4",
+            "5",
+            "6",
+            "Infinite"
+        ],
+        "correctAnswer": 1,
+        "points": 25
+    },
+    {
+        "id": 66,
+        "language": "asm",
+        "code": "XOR AX, AX",
+        "displayTime": 8,
+        "question": "What is the value of AX?",
+        "options": [
+            "1",
+            "0",
+            "Unchanged",
+            "undefined"
+        ],
+        "correctAnswer": 1,
         "points": 20
     }
 ]

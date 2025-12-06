@@ -52,8 +52,11 @@ export default function SetupScreen({ onStart }: SetupScreenProps) {
                     <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
                         Memory Game
                     </h1>
-                    <p className="text-xl text-gray-300">
+                    <p className="text-xl text-gray-300 mb-2">
                         Test your code memory skills!
+                    </p>
+                    <p className="text-sm text-blue-300">
+                        🎲 15 random levels will be selected: 5 beginner, 5 intermediate, 5 advanced
                     </p>
                 </div>
 
